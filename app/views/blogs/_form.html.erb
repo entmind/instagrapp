@@ -1,0 +1,27 @@
+<%= form_for(@blog, url: choose_new_or_edit) do |f| %>
+
+    <!-- バリデーションエラーの件数表示するよ dive02 -->
+    <% if @blog.errors.any? %>
+        <div id="error_explanation">
+                    <!-- @blog.errorsはバリデーションした際のエラー情報です dive02 -->
+                    <!-- @full_messagesは複数のエラーメッセージを表示します dive02 -->
+            <h2><%= @blog.errors.count %>件のエラーがあります。</h2>
+            <ul>
+                <% @blog.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <!-- <%= f.label :title %> -->
+    <p>Title(記事タイトル)：<%= f.text_field :title, class: 'form-control' %></p>    <!-- bootstrapのクラスをつけるよ。dive04 -->
+    <!-- <%= f.label :content %> -->
+    <p>Content(記事本文)：<%= f.text_field :content, class: 'form-control' %></p>    <!-- bootstrapのクラスをつけるよ。dive04 -->
+    <%= f.submit "記事を投稿する", class: 'btn btn-block btn-success' %>        <!-- bootstrapのクラスをつけるよ。dive04 -->
+    
+<% end %>
+
+<br><br><br><br>
+<%= link_to "記事一覧画面に戻る", blogs_path, class: 'btn btn-default btn-block' %>       <!-- bootstrapのクラスをつけるよ。dive04 -->
+

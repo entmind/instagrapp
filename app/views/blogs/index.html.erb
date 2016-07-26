@@ -1,0 +1,21 @@
+<div class="container">
+     <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+        <p id="notice"><%= notice %></p>
+        <h1>ブログ記事 一覧</h1>
+            <%= link_to "記事を作成する", new_blog_path, class: 'btn btn-default btn-md' %>
+
+        <% @blogs.each do |blog| %>
+            <div class="row">
+                <h4><strong><%= blog.title %></strong></h4>
+                <p><%= blog.content %></p>
+                <%= link_to "記事を編集する", edit_blog_path(blog.id), class: 'btn btn-default btn-sm btn-primary' %>
+                <%= link_to "記事を削除する", blog_path(blog.id), method: :delete, data: { confirm: '本当に削除してよいですか？' }, class: 'btn btn-default btn-sm btn-danger' %> <!-- dive02で追記したよ-->
+            </div>
+        <% end %>
+    </div>
+</div>
+
+<div id="page-top-btn2" class="page-top-btn2">    <!-- dive04で追記したよ。 -->
+    <p><a id="move-page-top" class="move-page-top">▲</a></p>
+</div>
+

@@ -1,0 +1,48 @@
+<div class="container">    <!-- 確認画面を作るよ dive03 -->
+    <div class="wrapper col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+        <p id="notice"><%= notice %></p>
+        <h1>ブログ記事 確認画面</h1>
+        <h3>以下の内容で作成しますか？</h3>
+
+        <%= form_for(@blog) do |f| %>
+        
+            <!-- バリデーションエラーの件数表示するよ dive02 →確認画面では要らないかも。。。 -->
+            <% if @blog.errors.any? %>
+                <div id="error_explanation">
+                            <!-- @blog.errorsはバリデーションした際のエラー情報です dive02 -->
+                            <!-- @full_messagesは複数のエラーメッセージを表示します dive02 -->
+                    <h2><%= @blog.errors.count %>件のエラーがあります。</h2>
+                    <ul>
+                        <% @blog.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                        <% end %>
+                    </ul>
+                </div>
+            <% end %>
+        
+            <!-- <%= f.label :title %> -->
+            <p>Title(記事タイトル)：<%= @blog.title %></p>
+            <%= f.hidden_field :title %>
+            <!-- <%= f.label :content %> -->
+            <p>Content(記事本文)：<%= @blog.content %></p>
+            <%= f.hidden_field :content %>
+            <%= f.submit "記事を作成する", class: 'btn btn-default btn-md btn-success' %>
+        <% end %>
+
+        <br><br><br><br>
+        <!-- <%= link_to "[ 記事一覧画面に戻る ]", :back %> -->
+            <!-- blogs_pathから、:back へ変更したよ。dive03 -->
+            <!-- だけど、前画面に戻ると、パラメータが初期されて戻ってしまうので、form_forを使う必要がある
+            (link_toでは、「デフォルトのHTTPメソッドがget」であるためcontrollerにパラメータを渡せない)ので、
+            link_toから、form_forへ書き換えます。dive03 -->
+        
+        <%= form_for(@blog, url: new_blog_path, method: 'get') do |f| %>
+            <%= f.hidden_field :title %>
+            <%= f.hidden_field :content %>
+            <%= f.submit "記事入力画面に戻る", name: 'back', class: 'btn btn-default btn-md' %>
+                <!-- 前画面に戻るときに、パラメータ保持で戻りたいので、「name: 'back'」とname属性を追記したよ。dive03 -->
+        <% end %>
+
+    </div>
+</div>
+
