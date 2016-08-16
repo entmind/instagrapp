@@ -21,10 +21,10 @@
             <% end %>
         
             <!-- <%= f.label :title %> -->
-            <p>Title(記事タイトル)：<%= @blog.title %></p>
+            <p>記事タイトル：<%= @blog.title %></p>
             <%= f.hidden_field :title %>
             <!-- <%= f.label :content %> -->
-            <p>Content(記事本文)：<%= @blog.content %></p>
+            <p>記事本文：<%= @blog.content %></p>
             <%= f.hidden_field :content %>
             <%= f.submit "記事を作成する", class: 'btn btn-default btn-md btn-success' %>
         <% end %>
@@ -44,5 +44,6 @@
         <% end %>
 
     </div>
+    
 </div>
 

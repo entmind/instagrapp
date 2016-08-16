@@ -21,13 +21,13 @@
             <% end %>
         
             <!-- <%= f.label :name %> -->
-            <p>Name(お問い合わせ件名)：<%= @contact.name %></p>
+            <p>名前(お問い合わせ件名)：<%= @contact.name %></p>
             <%= f.hidden_field :name %>
             <!-- <%= f.label :email %> -->
-            <p>Email(Ｅメール)：<%= @contact.email %></p>
+            <p>メールアドレス：<%= @contact.email %></p>
             <%= f.hidden_field :email %>
             <!-- <%= f.label :content %> -->
-            <p>Content(お問い合わせ本文)：<%= @contact.content %></p>
+            <p>お問い合わせ内容：<%= @contact.content %></p>
             <%= f.hidden_field :content %>
             <%= f.submit "お問い合わせを送信する", class: 'btn btn-default btn-md btn-success' %>
         <% end %>

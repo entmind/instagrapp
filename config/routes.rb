@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
 #  get 'top/index'    # root設定しているので、コントローラー作成時に生成された無用なルーティングは削除します
 
   get 'contacts' => 'contacts#new'  #dive01課題で追記したよ。
