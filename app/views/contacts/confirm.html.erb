@@ -5,7 +5,6 @@
         <h3>以下の内容で送信しますか？</h3>
 
         <%= form_for(@contact) do |f| %>
-        
             <!-- バリデーションエラーの件数表示するよ dive02-->
             <% if @contact.errors.any? %>
                 <div id="error_explanation">
@@ -31,7 +30,6 @@
             <%= f.hidden_field :content %>
             <%= f.submit "お問い合わせを送信する", class: 'btn btn-default btn-md btn-success' %>
         <% end %>
-        
     </div>
 </div>
 
@@ -45,8 +43,3 @@
     <%= f.submit "お問い合わせ入力画面に戻る", name: 'back', class: 'btn btn-default btn-md' %>
         <!-- 前画面に戻るときに、パラメータ保持で戻りたいので、「name: 'back'」とname属性を追記したよ。dive03課題 -->
 <% end %>
-
-
-
-
-

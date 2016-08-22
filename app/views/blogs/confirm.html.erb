@@ -5,7 +5,6 @@
         <h3>以下の内容で作成しますか？</h3>
 
         <%= form_for(@blog) do |f| %>
-        
             <!-- バリデーションエラーの件数表示するよ dive02 →確認画面では要らないかも。。。 -->
             <% if @blog.errors.any? %>
                 <div id="error_explanation">
@@ -42,8 +41,5 @@
             <%= f.submit "記事入力画面に戻る", name: 'back', class: 'btn btn-default btn-md' %>
                 <!-- 前画面に戻るときに、パラメータ保持で戻りたいので、「name: 'back'」とname属性を追記したよ。dive03 -->
         <% end %>
-
     </div>
-    
 </div>
-
