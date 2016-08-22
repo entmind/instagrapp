@@ -1,51 +1,56 @@
 class BlogsController < ApplicationController
+  # authenticate_user!はdive08で追記したよ。dive09でも登場した。
   before_action :authenticate_user!
   before_action :set_blog, only: [:edit, :update, :destroy]
-    # authenticate_user!はdive08で追記したよ。
 
+  # @blogs = Blog.all  記事全件を一覧表示するためよ。dive01
   def index
-    @blogs = Blog.all   # 記事全件を一覧表示するためよ。dive01
+    @blogs = Blog.all
   end
-  
+
+  # if params[:back]    (name属性付きで)戻るボタン押下されて返ってきたときの挙動をif文で処理です。dive03
+  # @blog = Blog.new(blogs_params)    (name属性付きなら)入力した記事をパラメータ保持で、@blogに格納するよ。dive03
+  # @blog = Blog.new    こちらはまったくの新規登録導線です。
   def new
-    if params[:back]    # (name属性付きで)戻るボタン押下されて返ってきたときの挙動をif文で処理です。dive03
-      @blog = Blog.new(blogs_params)    # (name属性付きなら)入力した記事をパラメータ保持で、@blogに格納するよ。dive03
+    if params[:back]
+      @blog = Blog.new(blogs_params)
     else
-      @blog = Blog.new  # こちらはまったくの新規登録導線です。
+      @blog = Blog.new
     end
   end
 
+  # render :new if @blog.invalid?    確認画面へ遷移したときのためにバリデーションを追記したよ。dive03
+  #                                  バリデーションは保存したときのみ発動するので。dive03
   def confirm
     @blog = Blog.new(blogs_params)
-    render :new if @blog.invalid?     # 確認画面へ遷移したときのためにバリデーションを追記したよ。dive03
-                                      # バリデーションは保存したときのみ発動するので。dive03
+    render :new if @blog.invalid?
   end
 
-  
+  # Blog.create(blogs_params)
+  # redirect_to blogs_path, notice: "記事を作成しました！"    一覧画面＆メッセージを表示します。
+  # render action: 'new'    入力フォームを再描画します。
+  # @blog.user_id = current_user.id    dive09で追記したよ。
   def create
-#    Blog.create(blogs_params)
-#    redirect_to blogs_path, notice: "記事を作成しました！"
-
     @blog = Blog.new(blogs_params)
+    @blog.user_id = current_user.id
     if @blog.save
-      redirect_to blogs_path, notice: "記事を作成しました！"  # 一覧画面＆メッセージを表示します。
+      redirect_to blogs_path, notice: "記事を作成しました！"
     else
-      render action: 'new'  # 入力フォームを再描画します。
+      render action: 'new'
     end
   end
 
+  # @blog = Blog.find(params[:id])    保存しているデータをDBから取得しているよ。dive02
+  #                                   リファクタリングで省略したよ。dive02
   def edit
-#    @blog = Blog.find(params[:id])    # 保存しているデータをDBから取得しているよ。dive02
-                                       # リファクタリングで省略したよ。dive02
   end
 
+  # @blog = Blog.find(params[:id])     # 保存しているデータをDBから取得しているよ。dive02
+  # @blog.update(blogs_params)         # dive02
+  # redirect_to blogs_path, notice: "記事を更新しました！"
+  # @blog = Blog.find(params[:id])
+  # リファクタリングで省略したよ。dive02
   def update
-#    @blog = Blog.find(params[:id])     # 保存しているデータをDBから取得しているよ。dive02
-#    @blog.update(blogs_params)         # dive02
-#    redirect_to blogs_path, notice: "記事を更新しました！"
-
-#    @blog = Blog.find(params[:id])
-                                        # リファクタリングで省略したよ。dive02
     if @blog.update(blogs_params) 
       redirect_to blogs_path, notice: "記事を投稿(更新)しました！"
     else
@@ -53,9 +58,9 @@ class BlogsController < ApplicationController
     end
   end
 
+  # @blog = Blog.find(params[:id])    保存しているデータをDBから取得しているよ。dive02
+  # リファクタリングで省略したよ。dive02
   def destroy
-#    @blog = Blog.find(params[:id])     # 保存しているデータをDBから取得しているよ。dive02
-                                        # リファクタリングで省略したよ。dive02
     @blog.destroy
     redirect_to blogs_path, notice: "記事を削除しました！"
   end

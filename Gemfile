@@ -48,3 +48,4 @@ gem 'jquery-turbolinks'    # dive05で追記したよ。
 gem 'execjs'    # dive05で追記したよ。
 gem 'rails_12factor', group: :production    # dive07で追記したよ。
 gem 'devise'    # dive08で追記したよ。
+gem 'faker'    #dive09で追記したよ。
