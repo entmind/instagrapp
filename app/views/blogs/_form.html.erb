@@ -1,27 +1,34 @@
 <%= form_for(@blog, url: choose_new_or_edit) do |f| %>
 
-    <!-- バリデーションエラーの件数表示するよ dive02 -->
-    <% if @blog.errors.any? %>
-        <div id="error_explanation">
-                    <!-- @blog.errorsはバリデーションした際のエラー情報です dive02 -->
-                    <!-- @full_messagesは複数のエラーメッセージを表示します dive02 -->
-            <h2><%= @blog.errors.count %>件のエラーがあります。</h2>
-            <ul>
-                <% @blog.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-                <% end %>
-            </ul>
-        </div>
-    <% end %>
+  <!-- バリデーションエラーの件数表示するよ dive02 -->
+  <% if @blog.errors.any? %>
+      <div id="error_explanation">
+                  <!-- @blog.errorsはバリデーションした際のエラー情報です dive02 -->
+                  <!-- @full_messagesは複数のエラーメッセージを表示します dive02 -->
+          <h2><%= @blog.errors.count %>件のエラーがあります。</h2>
+          <ul>
+              <% @blog.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+              <% end %>
+          </ul>
+      </div>
+  <% end %>
 
-    <!-- bootstrapのクラスをつけるよ。dive04 -->
+  <!-- bootstrapのクラスをつけるよ。dive04 -->
+  <% if current_page?(action: 'new') %>
+    <p>以下のフォームから新しい記事を投稿しましょう。</p>
+  <% else %>
     <p>ユーザーID：<%= @blog.user_id %>&nbsp;&nbsp;ユーザー名：<%= @blog.user.name %></p>
-    <!-- <%= f.label :title %> -->
-    <p>記事タイトル：<%= f.text_field :title, class: 'form-control' %></p>
-    <!-- <%= f.label :content %> -->
-    <p>記事本文：<%= f.text_field :content, class: 'form-control' %></p>
-    <%= f.submit "記事を投稿する", class: 'btn btn-block btn-success' %>
+  <% end %>
+
+
+  <!-- <%= f.label :title %> -->
+  <p>記事タイトル：<%= f.text_field :title, class: 'form-control' %></p>
+  <!-- <%= f.label :content %> -->
+  <p>記事本文：<%= f.text_field :content, class: 'form-control' %></p>
+  <%= f.submit "記事を投稿する", class: 'btn btn-block btn-success' %>
 <% end %>
 
 <br><br><br><br>
-<%= link_to "記事一覧画面に戻る", blogs_path, class: 'btn btn-default btn-block' %>       <!-- bootstrapのクラスをつけるよ。dive04 -->
+<!-- bootstrapのクラスをつけるよ。dive04 -->
+<%= link_to "記事一覧画面に戻る", blogs_path, class: 'btn btn-default btn-block' %>

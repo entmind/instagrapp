@@ -14,6 +14,7 @@ class BlogsController < ApplicationController
   def new
     if params[:back]
       @blog = Blog.new(blogs_params)
+      @blog.user_id = current_user.id
     else
       @blog = Blog.new
     end
@@ -23,6 +24,7 @@ class BlogsController < ApplicationController
   #                                  バリデーションは保存したときのみ発動するので。dive03
   def confirm
     @blog = Blog.new(blogs_params)
+    @blog.user_id = current_user.id
     render :new if @blog.invalid?
   end
 
@@ -68,7 +70,7 @@ class BlogsController < ApplicationController
   
   private
     def blogs_params
-      params.require(:blog).permit(:title, :content)
+      params.require(:blog).permit(:title, :content, :user_id, :name)
     end
     
     # idをキーとして値を取得するメソッド。リファクタリングで共通化したよ。dive02

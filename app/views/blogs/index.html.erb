@@ -4,7 +4,7 @@
         <h1>ブログ記事 一覧</h1>
             <%= link_to "記事を作成する", new_blog_path, class: 'btn btn-block btn-md' %>
 
-        <% @blogs.each do |blog| %>
+        <% @blogs.reverse_each do |blog| %>
             <div class="row">
                 <h4><strong><%= blog.title %></strong></h4><p>ユーザーID：<%= blog.user_id %>&nbsp;&nbsp;ユーザー名：<%= blog.user.name %></p>    <!-- dive09課題で追記したよ。 -->
                 <p><%= blog.content %></p>
