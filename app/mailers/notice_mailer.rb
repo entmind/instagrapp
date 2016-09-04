@@ -13,11 +13,18 @@ class NoticeMailer < ApplicationMailer
     mail to: "entmind@gmail.com",
       subject: '【Achieve】ブログが投稿されました'
   end
+
   # 追加したよ。dive11課題
   def sendmail_contact(contact)
     @contact = contact
 
     mail to: "entmind@gmail.com",
       subject: '【Achieve】お問い合わせが投稿されました'
+  end
+  def sendmail_contact2(contact)
+    @contact = contact
+
+    mail to: @contact.email,
+      subject: '【Achieve】お問い合わせを受け付けました'
   end
 end
