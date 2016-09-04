@@ -16,20 +16,21 @@ class ContactsController < ApplicationController
     @contact = Contact.create(contacts_params)
     if @contact.save
       redirect_to root_path, notice: "お問い合わせが完了しました！　ありがとうございました！"
+      NoticeMailer.sendmail_contact(@contact).deliver      
     else
       render action: 'new'
     end
   end
-  
+
   # dive03課題で追記したよ。
   def confirm
     @contact = Contact.new(contacts_params)
     render :new if @contact.invalid?
   end
-  
+
   private
     def contacts_params
       params.require(:contact).permit(:name, :email, :content)
     end
-    
+
 end
