@@ -32,11 +32,13 @@ class BlogsController < ApplicationController
   # redirect_to blogs_path, notice: "記事を作成しました！"    一覧画面＆メッセージを表示します。
   # render action: 'new'    入力フォームを再描画します。
   # @blog.user_id = current_user.id    dive09で追記したよ。
+  # NoticeMailer.sendmail_blog(@blog).deliver    dive11で追記したよ。
   def create
     @blog = Blog.new(blogs_params)
     @blog.user_id = current_user.id
     if @blog.save
       redirect_to blogs_path, notice: "記事を作成しました！"
+      NoticeMailer.sendmail_blog(@blog).deliver
     else
       render action: 'new'
     end
@@ -53,7 +55,7 @@ class BlogsController < ApplicationController
   # @blog = Blog.find(params[:id])
   # リファクタリングで省略したよ。dive02
   def update
-    if @blog.update(blogs_params) 
+    if @blog.update(blogs_params)
       redirect_to blogs_path, notice: "記事を投稿(更新)しました！"
     else
       render action: 'edit'
@@ -66,13 +68,13 @@ class BlogsController < ApplicationController
     @blog.destroy
     redirect_to blogs_path, notice: "記事を削除しました！"
   end
-  
-  
+
+
   private
     def blogs_params
       params.require(:blog).permit(:title, :content, :user_id, :name)
     end
-    
+
     # idをキーとして値を取得するメソッド。リファクタリングで共通化したよ。dive02
     def set_blog
       @blog = Blog.find(params[:id])
