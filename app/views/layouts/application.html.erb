@@ -22,7 +22,7 @@
               </button>
               <%= link_to "Achieve", root_path, class: "navbar-brand" %>
             </div><!-- /.navbar-header -->
-        
+
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav navbar-right">
@@ -34,7 +34,8 @@
                     <li><%= link_to "ブログ", blogs_path %></li>
                   </ul>
                 </li>
-                <% if user_signed_in? %>    <!--dive08 で追記したよ。  -->
+                <!--dive08 で追記したよ。  -->
+                <% if user_signed_in? %>
                   <li><%= link_to 'マイページ', edit_user_registration_path %></li>
                   <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
                 <% else %>
