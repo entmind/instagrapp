@@ -11,11 +11,11 @@ class ContactsController < ApplicationController
 
   # Contact.create(contacts_params)
   # redirect_to contacts_path, notice: "お問い合わせありがとうございました！"
-  # redirect_to root_path, notice: "お問い合わせが完了しました！　ありがとうございました！"    root_pathに変更したよ。dive04課題
+  # redirect_to root_path, notice: "お問い合わせが完了しました！ ありがとうございました！"    root_pathに変更したよ。dive04課題
   def create
     @contact = Contact.create(contacts_params)
     if @contact.save
-      redirect_to root_path, notice: "お問い合わせが完了しました！　ありがとうございました！"
+      redirect_to root_path, notice: "お問い合わせが完了しました！ ありがとうございました！"
       NoticeMailer.sendmail_contact(@contact).deliver
       NoticeMailer.sendmail_contact2(@contact).deliver
     else

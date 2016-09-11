@@ -308,7 +308,7 @@ ja:
     pm: 午後
 
 
-# モデルの属性名(nameなど)を日本語化　DIVE08で追記したよ。
+# モデルの属性名(nameなど)を日本語化 DIVE08で追記したよ。
 
   attributes:
     title: タイトル
@@ -319,26 +319,3 @@ ja:
     password: "パスワード"
     password_confirmation: "確認用パスワード"
     remember_me: "ログインを記憶"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

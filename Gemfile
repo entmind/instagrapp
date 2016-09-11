@@ -44,8 +44,16 @@ group :development, :test do
 end
 
 gem 'twitter-bootstrap-rails'
-gem 'jquery-turbolinks'    # dive05で追記したよ。
-gem 'execjs'    # dive05で追記したよ。
-gem 'rails_12factor', group: :production    # dive07で追記したよ。
-gem 'devise'    # dive08で追記したよ。
-gem 'faker'    #dive09で追記したよ。
+# dive05で追記したよ。
+gem 'jquery-turbolinks'
+gem 'execjs'
+# dive07で追記したよ。
+gem 'rails_12factor', group: :production
+# dive08で追記したよ。
+gem 'devise'
+#dive09で追記したよ。
+gem 'faker'
+# dive12で追記したよ。
+gem 'therubyracer', platforms: :ruby
+gem 'rails_admin'
+gem 'cancan'
