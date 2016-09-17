@@ -3,22 +3,25 @@
         <p id="notice"><%= notice %></p>
         <h1>お問い合わせ</h1>
             <p>以下のお問い合わせフォームへ入力したあと、<br>「入力内容を確認する」ボタンを押下してください。</p>
-    
+
         <%= form_for(@contact, url:confirm_contacts_path) do |f| %>
             <!-- バリデーションエラーの件数表示するよ dive02-->
-            <% if @contact.errors.any? %>
-                <div id="error_explanation">
+  <!-- #            <% if @contact.errors.any? %>
+  <!-- #              <div id="error_explanation">
                             <!--@contact.errorsはバリデーションした際のエラー情報です dive02 -->
                             <!--@full_messagesは複数のエラーメッセージを表示します dive02 -->
-                    <h2><%= @contact.errors.count %>件のエラーがあります。</h2>
-                    <ul>
-                        <% @contact.errors.full_messages.each do |msg| %>
-                        <li><%= msg %></li>
-                        <% end %>
-                    </ul>
-                </div>
-            <% end %>
-        
+  <!-- #                    <h2><%= @contact.errors.count %>件のエラーがあります。</h2>
+  <!-- #                    <ul>
+  <!-- #                        <% @contact.errors.full_messages.each do |msg| %>
+  <!-- #                        <li><%= msg %></li>
+  <!-- #                        <% end %>
+  <!-- #                    </ul>
+  <!-- #                </div>
+  <!-- #            <% end %>
+
+            <!-- 上記のエラーメッセージを削除して、書き換えたよ。dive13 -->
+            <%= f.error_messages! %>
+
             <!-- <%= f.label :name %> -->
             <p>名前(お問い合わせ件名)：<%= f.text_field :name %></p>
             <!-- <%= f.label :email %> -->

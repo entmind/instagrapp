@@ -41,6 +41,9 @@ group :development, :test do
   gem 'spring'
   # 新規追加したよ。dive11
   gem 'letter_opener'
+  # dive13で追記したよ。
+  gem 'pry-rails'
+  gem 'better_errors'
 end
 
 gem 'twitter-bootstrap-rails'
