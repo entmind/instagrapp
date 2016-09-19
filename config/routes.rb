@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  devise_for :users
+
+  # deviseにomniauthを追加したよ。dive14
+  devise_for :users, controllers: {
+    omniauth_callbacks: "users/omniauth_callbacks"
+  }
 #  get 'top/index'    # root設定しているので、コントローラー作成時に生成された無用なルーティングは削除します
 
   get 'contacts' => 'contacts#new'  #dive01課題で追記したよ。

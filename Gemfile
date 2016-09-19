@@ -44,6 +44,8 @@ group :development, :test do
   # dive13で追記したよ。
   gem 'pry-rails'
   gem 'better_errors'
+  # dive14で追記したよ。
+  gem 'dotenv-rails'
 end
 
 gem 'twitter-bootstrap-rails'
@@ -60,3 +62,7 @@ gem 'faker'
 gem 'therubyracer', platforms: :ruby
 gem 'rails_admin'
 gem 'cancan'
+# dive14で追記したよ。
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'

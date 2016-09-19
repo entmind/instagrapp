@@ -11,3 +11,6 @@
 /log/*
 !/log/.keep
 /tmp
+
+# dotinv-rails   dive14で追記したよ。
+.env
