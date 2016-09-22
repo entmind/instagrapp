@@ -6,7 +6,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable
   has_many :blogs
 
-  def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
+  # dive14で追記したよ。
+  def self.find_for_facebook_oauth(auth, signed_in_resource = nil)
     user = User.where(provider: auth.provider, uid: auth.uid).first
 
     unless user
@@ -20,6 +21,25 @@ class User < ActiveRecord::Base
       )
       user.skip_confirmation!
       user.save(validate: false)
+    end
+    user
+  end
+
+  # dive14で追記したよ。
+  def self.find_for_twitter_oauth(auth, signed_in_resource = nil)
+    user = User.where(provider: auth.provider, uid: auth.uid).first
+
+    unless user
+      user = User.new(
+        name: auth.info.nickname,
+        image_url: auth.info.image,
+        provider: auth.provider,
+        uid: auth.uid,
+        email: auth.info.email ||= "#{auth.uid}-#{auth.provider}@example.com",
+        password: Devise.friendly_token[0, 20]
+      )
+      user.skip_confirmation!
+      user.save
     end
     user
   end
