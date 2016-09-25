@@ -6,10 +6,26 @@
 
         <% @blogs.reverse_each do |blog| %>
             <div class="row">
-                <h4><strong><%= blog.title %></strong></h4><p>ユーザーID：<%= blog.user_id %>&nbsp;&nbsp;ユーザー名：<%= blog.user.name %></p>    <!-- dive09課題で追記したよ。 -->
+                <!-- dive09課題で追記したよ。dive14でプロフィール画像を追加したよ。 -->
+                <h4><strong><%= blog.title %></strong></h4>
+                <div class="user-avatar">
+                  <span>ユーザーID：<%= blog.user_id %>&nbsp;&nbsp;ユーザー名：<%= blog.user.name %>&nbsp;&nbsp;ユーザー画像：</span>
+                  <% if blog.user.avatar? %>
+                    <%= image_tag(blog.user.avatar) %>
+                  <% elsif !blog.user.image_url? %>
+                    <%= image_tag('no_image.png') %>
+                  <% else %>
+                    <%= image_tag(blog.user.image_url) %>
+                  <% end %>
+                </div>
                 <p><%= blog.content %></p>
-                <%= link_to "記事を編集する", edit_blog_path(blog.id), class: 'btn btn-default btn-sm btn-primary' %>
-                <%= link_to "記事を削除する", blog_path(blog.id), method: :delete, data: { confirm: '本当に削除してよいですか？' }, class: 'btn btn-default btn-sm btn-danger' %> <!-- dive02で追記したよ-->
+                <!-- dive14kadaiで補足修正したよ。 -->
+                <% if blog.user_id == current_user.id %>
+                  <%= link_to "記事を編集する", edit_blog_path(blog.id), class: 'btn btn-default btn-sm btn-primary' %>
+                  <%= link_to "記事を削除する", blog_path(blog.id), method: :delete, data: { confirm: '本当に削除してよいですか？' }, class: 'btn btn-default btn-sm btn-danger' %> <!-- dive02で追記したよ-->
+                <% else %>
+                  <span>（非認証）</span>
+                <% end %>
             </div>
         <% end %>
     </div>

@@ -198,3 +198,14 @@ p#notice {
 ul {
     list-style: none;
 }
+
+
+// dive14で追記したよ。
+div.user-avatar img {
+  max-width: 25px;
+}
+
+.field img {
+  max-width: 100px;
+  margin: 10px 10px 10px 10px;
+}

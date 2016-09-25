@@ -1,4 +1,16 @@
 module ApplicationHelper
+  # プロフィール画像の表示。dive14で追記したよ。
+  # carrierwaveでアップロードした画像を表示させる処理も追記したよ。
+  def profile_img(user)
+    return image_tag(user.avatar, alt: user.name) if user.avatar?
+    
+    unless user.provider.blank?
+      img_url = user.image_url
+    else
+      img_url = 'no_image.png'
+    end
+    image_tag(img_url, alt: user.name)
+  end  
 end
 
 # FormBuilderの拡張。dive13で追記したよ。

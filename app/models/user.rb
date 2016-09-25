@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable
   has_many :blogs
+  # carrierwave用用の設定設定。dive14で追記したよ。
+  mount_uploader :avatar, AvatarUploader
 
   # dive14で追記したよ。
   def self.find_for_facebook_oauth(auth, signed_in_resource = nil)
@@ -43,4 +45,15 @@ class User < ActiveRecord::Base
     end
     user
   end
+  
+  # dive14で追記したよ。omniauthでサインアップしたアカウントのユーザ情報の変更出来るようにする。
+  def update_with_password(params, *options)
+    if provider.blank?
+      super
+    else
+      params.delete :current_password
+      update_without_password(params, *options)
+    end
+  end
+  
 end

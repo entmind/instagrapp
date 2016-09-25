@@ -19,9 +19,20 @@
 
   <!-- bootstrapのクラスをつけるよ。dive04 -->
   <% if current_page?(action: 'new') %>
-    <p>以下のフォームから新しい記事を投稿しましょう。</p>
+                <div class="user-avatar">
+                  <span>以下のフォームから新しい記事を投稿しましょう。</p>
+                </div>
   <% else %>
-    <p>ユーザーID：<%= @blog.user_id %>&nbsp;&nbsp;ユーザー名：<%= @blog.user.name %></p>
+                <div class="user-avatar">
+                  <span>ユーザーID：<%= @blog.user_id %>&nbsp;&nbsp;ユーザー名：<%= @blog.user.name %>&nbsp;&nbsp;ユーザー画像：</span>
+                  <% if @blog.user.avatar? %>
+                    <%= image_tag(@blog.user.avatar) %>
+                  <% elsif !@blog.user.image_url? %>
+                    <%= image_tag('no_image.png') %>
+                  <% else %>
+                    <%= image_tag(@blog.user.image_url) %>
+                  <% end %>
+                </div>
   <% end %>
 
 
