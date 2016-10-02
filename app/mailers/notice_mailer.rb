@@ -11,7 +11,7 @@ class NoticeMailer < ApplicationMailer
     @greeting = "Hi"
 
     mail to: "entmind@gmail.com",
-      subject: '【Achieve】ブログが投稿されました'
+      subject: '【Instagrapp】画像が投稿されました'
   end
 
   # 追加したよ。dive11課題
@@ -19,12 +19,12 @@ class NoticeMailer < ApplicationMailer
     @contact = contact
 
     mail to: "entmind@gmail.com",
-      subject: '【Achieve】お問い合わせが投稿されました'
+      subject: '【Instagrapp】お問い合わせが投稿されました'
   end
   def sendmail_contact2(contact)
     @contact = contact
 
     mail to: @contact.email,
-      subject: '【Achieve】お問い合わせを受け付けました'
+      subject: '【Instagrapp】お問い合わせを受け付けました'
   end
 end
