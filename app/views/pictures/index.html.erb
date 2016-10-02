@@ -19,9 +19,10 @@
                   <% end %>
                 </div>
                 <!-- <p><%= picture.content %></p> -->
+                <p><%= image_tag(picture.pic) %></p>
                 <!-- dive14kadaiで補足修正したよ。 -->
                 <% if picture.user_id == current_user.id %>
-                  <%= link_to "キャプションを編集する", edit_picture_path(picture.id), class: 'btn btn-default btn-sm btn-primary' %>
+                  <%= link_to "投稿を編集する", edit_picture_path(picture.id), class: 'btn btn-default btn-sm btn-primary' %>
                   <%= link_to "投稿を削除する", picture_path(picture.id), method: :delete, data: { confirm: '本当に削除してよいですか？' }, class: 'btn btn-default btn-sm btn-danger' %> <!-- dive02で追記したよ-->
                 <% else %>
                   <span>（非認証）</span>

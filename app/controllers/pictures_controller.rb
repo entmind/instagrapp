@@ -69,15 +69,17 @@ class PicturesController < ApplicationController
     redirect_to pictures_path, notice: "記事を削除しました！"
   end
 
+  PERMISSIBLE_ATTRIBUTES = %i(name pic pic_cache)
 
   private
     def pictures_params
-      params.require(:picture).permit(:title, :content, :user_id, :name)
+      params.require(:picture).permit(:title, :content, :user_id, :name, :pic, :pic_cache)
     end
 
     # idをキーとして値を取得するメソッド。リファクタリングで共通化したよ。dive02
     def set_picture
       @picture = Picture.find(params[:id])
     end
+    
 
 end

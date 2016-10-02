@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   PERMISSIBLE_ATTRIBUTES = %i(name avatar avatar_cache)
+  PERMISSIBLE_ATTRIBUTES = %i(name pic pic_cache)
 
   private
 

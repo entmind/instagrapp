@@ -20,16 +20,21 @@
             <% end %>
         
             <!-- <%= f.label :title %> -->
-            <p>キャプション：<%= @picture.title %></p>
+            <p>タイトル：<%= @picture.title %></p>
             <%= f.hidden_field :title %>
             <!-- <%= f.label :content %> -->
             <!-- <p>記事本文：<%= @picture.content %></p> -->
-            <!-- <%= f.hidden_field :content %> -->
-            <%= f.submit "記事を作成する", class: 'btn btn-default btn-md btn-success' %>
+            <div class="field">
+                <p>画像：(まだ投稿されていません)</p>
+                <%= insta_img(@picture) if insta_img(@picture) %>
+                <%= f.hidden_field :pic_cache %>
+                <!-- <%= f.hidden_field :content %> -->
+            </div>
+            <%= f.submit "投稿を作成する", class: 'btn btn-default btn-md btn-success' %>
         <% end %>
 
         <br><br><br><br>
-        <!-- <%= link_to "[ 記事一覧画面に戻る ]", :back %> -->
+        <!-- <%= link_to "[ 投稿画像一覧画面に戻る ]", :back %> -->
             <!-- pictures_pathから、:back へ変更したよ。dive03 -->
             <!-- だけど、前画面に戻ると、パラメータが初期されて戻ってしまうので、form_forを使う必要がある
             (link_toでは、「デフォルトのHTTPメソッドがget」であるためcontrollerにパラメータを渡せない)ので、

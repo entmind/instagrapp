@@ -11,7 +11,15 @@ module ApplicationHelper
     end
     image_tag(img_url, alt: user.name)
   end  
+  
+  def insta_img(picture)
+    return image_tag(picture.pic, alt: picture.name) if picture.pic?
+    
+  end  
+
 end
+
+
 
 # FormBuilderの拡張。dive13で追記したよ。
 module ActionView
