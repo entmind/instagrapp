@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Achieve</title>
+  <title>Instagrapp</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">    <!-- スマホタブレ対応。dive04で追記したよ -->
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -20,20 +20,20 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <%= link_to "Achieve", root_path, class: "navbar-brand" %>
+              <%= link_to "Instagrapp", root_path, class: "navbar-brand" %>
             </div><!-- /.navbar-header -->
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav navbar-right">
-                <li><%= link_to "ブログ", blogs_path %></li>
-                <li><%= link_to "お問い合わせ", new_contact_path %></li>
-                <li class="dropdown">
+                <li><%= link_to "Pictures(画像を投稿)", pictures_path %></li>
+<!--                <li><%= link_to "お問い合わせ", new_contact_path %></li>  -->
+<!--                <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    <li><%= link_to "ブログ", blogs_path %></li>
+                    <li><%= link_to "Pictures", pictures_path %></li>
                   </ul>
-                </li>
+                </li>  -->
                 <!--dive08 で追記したよ。  -->
                 <% if user_signed_in? %>
                   <li><%= link_to 'マイページ', edit_user_registration_path %></li>

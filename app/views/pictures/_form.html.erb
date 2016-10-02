@@ -1,13 +1,13 @@
-<%= form_for(@blog, url: choose_new_or_edit) do |f| %>
+<%= form_for(@picture, url: choose_new_or_edit) do |f| %>
 
   <!-- バリデーションエラーの件数表示するよ dive02 -->
-  <!-- #  <% if @blog.errors.any? %> -->
+  <!-- #  <% if @picture.errors.any? %> -->
   <!-- #        <div id="error_explanation"> -->
-                  <!-- @blog.errorsはバリデーションした際のエラー情報です dive02 -->
+                  <!-- @picture.errorsはバリデーションした際のエラー情報です dive02 -->
                   <!-- @full_messagesは複数のエラーメッセージを表示します dive02 -->
-  <!-- #            <h2><%= @blog.errors.count %>件のエラーがあります。</h2> -->
+  <!-- #            <h2><%= @picture.errors.count %>件のエラーがあります。</h2> -->
   <!-- #            <ul> -->
-  <!-- #                <% @blog.errors.full_messages.each do |msg| %> -->
+  <!-- #                <% @picture.errors.full_messages.each do |msg| %> -->
   <!-- #                <li><%= msg %></li> -->
   <!-- #                <% end %> -->
   <!-- #            </ul> -->
@@ -20,29 +20,29 @@
   <!-- bootstrapのクラスをつけるよ。dive04 -->
   <% if current_page?(action: 'new') %>
                 <div class="user-avatar">
-                  <span>以下のフォームから新しい記事を投稿しましょう。</p>
+                  <span>以下のフォームから新しい画像を投稿しましょう。</p>
                 </div>
   <% else %>
                 <div class="user-avatar">
-                  <span>ユーザーID：<%= @blog.user_id %>&nbsp;&nbsp;ユーザー名：<%= @blog.user.name %>&nbsp;&nbsp;ユーザー画像：</span>
-                  <% if @blog.user.avatar? %>
-                    <%= image_tag(@blog.user.avatar) %>
-                  <% elsif !@blog.user.image_url? %>
+                  <span>ユーザーID：<%= @picture.user_id %>&nbsp;&nbsp;ユーザー名：<%= @picture.user.name %>&nbsp;&nbsp;ユーザー画像：</span>
+                  <% if @picture.user.avatar? %>
+                    <%= image_tag(@picture.user.avatar) %>
+                  <% elsif !@picture.user.image_url? %>
                     <%= image_tag('no_image.png') %>
                   <% else %>
-                    <%= image_tag(@blog.user.image_url) %>
+                    <%= image_tag(@picture.user.image_url) %>
                   <% end %>
                 </div>
   <% end %>
 
 
   <!-- <%= f.label :title %> -->
-  <p>記事タイトル：<%= f.text_field :title, class: 'form-control' %></p>
+  <p>キャプション：<%= f.text_field :title, class: 'form-control' %></p>
   <!-- <%= f.label :content %> -->
-  <p>記事本文：<%= f.text_field :content, class: 'form-control' %></p>
+  <!-- <p>記事本文：<%= f.text_field :content, class: 'form-control' %></p> -->
   <%= f.submit "記事を投稿する", class: 'btn btn-block btn-success' %>
 <% end %>
 
 <br><br><br><br>
 <!-- bootstrapのクラスをつけるよ。dive04 -->
-<%= link_to "記事一覧画面に戻る", blogs_path, class: 'btn btn-default btn-block' %>
+<%= link_to "投稿画像一覧画面に戻る", pictures_path, class: 'btn btn-default btn-block' %>

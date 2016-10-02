@@ -20,7 +20,7 @@ end
 
 n = 1
 while n <= 100
-  Blog.create(
+  Picture.create(
     title: "あああ",
     user_id: n
   )

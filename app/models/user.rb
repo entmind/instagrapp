@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   # :omniauthableを追加したよ。dive14
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable
-  has_many :blogs
+  has_many :pictures
   # carrierwave用用の設定設定。dive14で追記したよ。
   mount_uploader :avatar, AvatarUploader
 

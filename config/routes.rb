@@ -14,8 +14,8 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'blogs' => 'blogs#index'  # dive01で追記したよ。
-  resources :blogs, only: [:index, :new, :create, :edit, :update, :destroy] do
+  get 'pictures' => 'pictures#index'  # dive01で追記したよ。
+  resources :pictures, only: [:index, :new, :create, :edit, :update, :destroy] do
     collection do
       post :confirm
     end

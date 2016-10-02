@@ -1,0 +1,36 @@
+<div class="container">
+     <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+        <p id="notice"><%= notice %></p>
+        <h1>投稿画像 一覧</h1>
+            <%= link_to "投稿を作成する", new_picture_path, class: 'btn btn-block btn-md' %>
+
+        <% @pictures.reverse_each do |picture| %>
+            <div class="row">
+                <!-- dive09課題で追記したよ。dive14でプロフィール画像を追加したよ。 -->
+                <h4><strong><%= picture.title %></strong></h4>
+                <div class="user-avatar">
+                  <span>ユーザーID：<%= picture.user_id %>&nbsp;&nbsp;ユーザー名：<%= picture.user.name %>&nbsp;&nbsp;ユーザー画像：</span>
+                  <% if picture.user.avatar? %>
+                    <%= image_tag(picture.user.avatar) %>
+                  <% elsif !picture.user.image_url? %>
+                    <%= image_tag('no_image.png') %>
+                  <% else %>
+                    <%= image_tag(picture.user.image_url) %>
+                  <% end %>
+                </div>
+                <!-- <p><%= picture.content %></p> -->
+                <!-- dive14kadaiで補足修正したよ。 -->
+                <% if picture.user_id == current_user.id %>
+                  <%= link_to "キャプションを編集する", edit_picture_path(picture.id), class: 'btn btn-default btn-sm btn-primary' %>
+                  <%= link_to "投稿を削除する", picture_path(picture.id), method: :delete, data: { confirm: '本当に削除してよいですか？' }, class: 'btn btn-default btn-sm btn-danger' %> <!-- dive02で追記したよ-->
+                <% else %>
+                  <span>（非認証）</span>
+                <% end %>
+            </div>
+        <% end %>
+    </div>
+</div>
+
+<div id="page-top-btn2" class="page-top-btn2">    <!-- dive04で追記したよ。 -->
+    <p><a id="move-page-top" class="move-page-top">▲</a></p>
+</div>
